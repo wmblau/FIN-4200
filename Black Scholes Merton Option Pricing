@@ -1,0 +1,28 @@
+#!/usr/wmb/env python
+# coding: utf-8
+
+def BSMOptionPrice(s,k,t,r,v)
+    #s = Spot Price
+    #k = Strike Price
+    #t = Time to Maturity
+    #r = Risk Free Rate
+    #v= Asset Volatility
+
+import numpy as np
+
+
+
+d1 = (np.log(s / k) + (r + 0.5 * v ** 2) * t) / (v * np.sqrt(t))
+d2 = (np.log(s / k) + (r - 0.5 * v ** 2) * t) / (v * np.sqrt(t))
+
+
+if option == 'put':
+        result = (k * np.exp(-r * t) * si.norm.cdf(-d2, 0.0, 1.0) - s * si.norm.cdf(-d1, 0.0, 1.0))
+return result
+
+
+
+if option == 'call':
+        result = (s * si.norm.cdf(d1, 0.0, 1.0) - k * np.exp(-r * t) * si.norm.cdf(d2, 0.0, 1.0))
+
+
